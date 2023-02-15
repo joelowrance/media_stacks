@@ -1,0 +1,34 @@
+version: "2.1"
+services:
+  transmission-openvpn:
+    image: haugene/transmission-openvpn:latest
+    cap_add:
+      - NET_ADMIN
+    volumes:
+      - /config/transmission:/config
+      - /media/joe/volume4:/volume4
+      - /media/joe/volume5:/volume5
+      - /media/joe/EXT4T:/volume6
+      - /media/joe/EXT5T:/volume7
+    container_name: transmission-openvpn
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/New_York
+      - OPENVPN_PROVIDER=NORDVPN
+      - OPENVPN_CONFIG=CA Toronto
+      - OPENVPN_USERNAME=you@youremail.com
+      - OPENVPN_PASSWORD=yourpassword
+      - NORDVPN_COUNTRY=[  ]
+      - NORDVPN_CATEGORY=P2P
+      - NORDVPN_PROTOCOL=udp
+      # cidr notation for local network
+      - LOCAL_NETWORK=192.168.0.0/13
+    logging:
+      driver: json-file
+      options:
+        max-size: 10m
+    ports:
+      - 9091:9091
+    restart: unless-stopped      
+    

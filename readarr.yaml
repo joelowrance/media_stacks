@@ -1,0 +1,18 @@
+version: "2.1"
+services:
+  readarr:
+    image: lscr.io/linuxserver/readarr:develop
+    container_name: readarr
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/New_York
+    volumes:
+      - /config/radarr:/config
+      - /media/joe/volume4:/volume4
+      - /media/joe/volume5:/volume5
+      - /media/joe/EXT4T:/volume6
+      - /media/joe/EXT5T:/volume7
+    ports:
+      - 8787:8787
+    restart: unless-stopped

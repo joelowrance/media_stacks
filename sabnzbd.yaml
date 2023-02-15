@@ -1,0 +1,18 @@
+version: "2.1"
+services:
+  sabnzbd:
+      image: lscr.io/linuxserver/sabnzbd:latest
+      container_name: sabnzbd
+      environment:
+        - PUID=1000
+        - PGID=1000
+        - TZ=America/New_York
+      volumes:
+        - /config/sabnzbd:/config
+        - /media/joe/volume4:/volume4
+        - /media/joe/volume5:/volume5
+        - /media/joe/EXT4T:/volume6
+        - /media/joe/EXT5T:/volume7
+      ports:
+        - 8080:8080
+      restart: unless-stopped
