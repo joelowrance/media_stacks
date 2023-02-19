@@ -9,10 +9,10 @@ services:
         - TZ=America/New_York
       volumes:
         - /config/sabnzbd:/config
-        - /media/joe/volume4:/volume4
-        - /media/joe/volume5:/volume5
-        - /media/joe/EXT4T:/volume6
-        - /media/joe/EXT5T:/volume7
+        - /volume4:/volume4
+        - /volume5:/volume5
+        - /EXT4T:/EXT4T
+        - /EXT5T:/EXT5T
       ports:
         - 8080:8080
       restart: unless-stopped

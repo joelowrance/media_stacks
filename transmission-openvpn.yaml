@@ -6,10 +6,10 @@ services:
       - NET_ADMIN
     volumes:
       - /config/transmission:/config
-      - /media/joe/volume4:/volume4
-      - /media/joe/volume5:/volume5
-      - /media/joe/EXT4T:/volume6
-      - /media/joe/EXT5T:/volume7
+      - /volume4:/volume4
+      - /volume5:/volume5
+      - /EXT4T:/EXT4T
+      - /EXT5T:/EXT5T
     container_name: transmission-openvpn
     environment:
       - PUID=1000
@@ -24,6 +24,10 @@ services:
       - NORDVPN_PROTOCOL=udp
       # cidr notation for local network
       - LOCAL_NETWORK=192.168.0.0/13
+      # settings in app dont seem to work
+      - TRANSMISSION_DOWNLOAD_DIR=/volume4/completed
+      - TRANSMISSION_INCOMPLETE_DIR=/volume4/incomplete
+      - TRANSMISSION_WATCH_DIR=/volume4/watch
     logging:
       driver: json-file
       options:
