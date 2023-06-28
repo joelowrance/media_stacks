@@ -16,10 +16,10 @@ services:
       - PGID=1000
       - TZ=America/New_York
       - OPENVPN_PROVIDER=NORDVPN
-      - OPENVPN_CONFIG=CA Toronto
-      - OPENVPN_USERNAME=you@youremail.com
-      - OPENVPN_PASSWORD=yourpassword
-      - NORDVPN_COUNTRY=[  ]
+      - OPENVPN_CONFIG=mexico
+      - OPENVPN_USERNAME=************USE TOKEN******************
+      - OPENVPN_PASSWORD=************USE TOKEN******************
+      - NORDVPN_COUNTRY=MX
       - NORDVPN_CATEGORY=P2P
       - NORDVPN_PROTOCOL=udp
       # cidr notation for local network
