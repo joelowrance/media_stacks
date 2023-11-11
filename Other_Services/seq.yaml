@@ -1,0 +1,15 @@
+version: "3:4"
+
+services:
+  seq:
+    image: datalust/seq:latest
+    restart: unless-stopped
+    container_name: seq
+    environment:
+      - ACCEPT_EULA=Y
+      - SEQ_API_KEY=super-secret
+    ports:
+      - 5341:5341
+      - 9080:80
+    volumes:
+      - /c/temp/seq:/data

@@ -48,4 +48,6 @@ Books
 ### Jellyfin
 Media center 
 
-
+### Docker compose that I keep forgetting
+`docker compose -f file name.yml up -d`
+`docker compose -f file name.yml down`
