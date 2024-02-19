@@ -8,11 +8,16 @@ services:
       - PGID=1000
       - TZ=America/New_York
     volumes:
-      - /config/radarr:/config
-      - /media/joe/volume4:/volume4
-      - /media/joe/volume5:/volume5
-      - /media/joe/EXT4T:/volume6
-      - /media/joe/EXT5T:/volume7
+      - /config/sonarr:/config
+      - /volume4:/volume4
+      - /volume5:/volume5
+      - /volume6:/volume6
+      - /volume7:/volume7
     ports:
       - 8989:8989
+    dns:
+      - 1.1.1.1
+      - 8.8.8.8
     restart: unless-stopped
+
+#admin/admin123

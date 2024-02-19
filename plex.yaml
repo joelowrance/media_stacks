@@ -1,20 +1,19 @@
 version: "2.1"
 services:
-  readarr:
-    image: lscr.io/linuxserver/readarr:develop
-    container_name: readarr
+  plex:
+    image: lscr.io/linuxserver/plex:latest
+    container_name: plex
+    network_mode: host
     environment:
       - PUID=1000
       - PGID=1000
       - TZ=America/New_York
+      - VERSION=docker
+      - PLEX_CLAIM=claim-123!456z
     volumes:
-      - /config/radarr:/config
+      - /config/plex:/config
       - /volume4:/volume4
       - /volume5:/volume5
       - /volume6:/volume6
       - /volume7:/volume7
-      - /EXT4T:/EXT4T
-      - /EXT5T:/EXT5T
-    ports:
-      - 8787:8787
     restart: unless-stopped

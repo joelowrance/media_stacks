@@ -11,8 +11,13 @@ services:
       - /config/prowlarr:/config
       - /volume4:/volume4
       - /volume5:/volume5
+      - /volume6:/volume6
+      - /volume7:/volume7
       - /EXT4T:/EXT4T
       - /EXT5T:/EXT5T
     ports:
       - 9696:9696
+    dns:
+      - 1.1.1.1
+      - 8.8.8.8
     restart: unless-stopped
