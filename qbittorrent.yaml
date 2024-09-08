@@ -1,0 +1,30 @@
+services:
+  qbittorrent:
+    image: lscr.io/linuxserver/qbittorrent:latest
+    container_name: qbittorrent
+    cap_add:
+      - NET_ADMIN
+    volumes:
+      - /config/qbittorrent:/config
+      - /volume4:/volume4
+      - /volume5:/volume5
+      - /EXT4T:/EXT4T
+      - /EXT5T:/EXT5T
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/UTC
+      - WEBUI_PORT=9191
+      - TORRENTING_PORT=6881
+    network_mode: "service:gluetun"
+    #ports:
+    #
+    #  - 8080:8080
+    #  - 6881:6881
+    #  - 6881:6881/udp
+    restart: unless-stopped
+
+
+    #https://www.reddit.com/r/unRAID/comments/180ou0b/psa_if_you_cant_login_to_qbittorrent_pass/
+    # . it will produce a random password, you can find it in the container log.
+    # nE4YTmYVf

@@ -1,0 +1,29 @@
+version: '3.6'
+services:
+  gitlab:
+    image: gitlab/gitlab-ee:latest
+    container_name: gitlab
+    restart: always
+    hostname: 'gitlab.local'  #same as below.
+    environment:
+      GITLAB_OMNIBUS_CONFIG: |
+        # Add any other gitlab.rb configuration here, each on its own line
+        # !!!
+        # need to add this hosts file. 9980 needs to be the same as the external_url
+        # 2424 same as below.
+        external_url 'http://gitlab.local:9980'
+        gitlab_rails['gitlab_shell_ssh_port'] = 2424  
+    ports:
+      - '9980:9980'
+      - '9943:443'
+      - '2424:2424'
+    volumes:
+      - 'c:\temp\gitlab\config:/etc/gitlab'
+      - 'c:\temp\gitlab\logs:/var/log/gitlab'
+      - 'c:\temp\gitlab\data:/var/opt/gitlab'
+    shm_size: '256m'
+
+    #my gmail admin123123
+    #root / Y+LZ/3RleT7/AkYCMoj9lDRKTpx/yTXr9+FcydByRSg= 
+    # find this by docker exec -it gitlab bin/bash
+    # root@gitlab:/# `cat etc/gitlab/initial_root_password`
