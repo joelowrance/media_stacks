@@ -13,6 +13,7 @@ services:
         - /volume5:/volume5
         - /EXT4T:/EXT4T
         - /EXT5T:/EXT5T
+      network_mode: "service:gluetun"
       ports:
         - 8080:8080
       restart: unless-stopped

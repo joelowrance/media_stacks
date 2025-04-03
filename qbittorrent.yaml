@@ -16,15 +16,12 @@ services:
       - TZ=Etc/UTC
       - WEBUI_PORT=9191
       - TORRENTING_PORT=6881
-    network_mode: "service:gluetun"
+    devices:
+      - /dev/net/tun
+    network_mode: "container:gluetun-gluetun-1"
     #ports:
-    #
-    #  - 8080:8080
+    #  - 9191:9191
     #  - 6881:6881
     #  - 6881:6881/udp
     restart: unless-stopped
-
-
-    #https://www.reddit.com/r/unRAID/comments/180ou0b/psa_if_you_cant_login_to_qbittorrent_pass/
-    # . it will produce a random password, you can find it in the container log.
-    # nE4YTmYVf
+  

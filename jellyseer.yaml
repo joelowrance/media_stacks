@@ -1,0 +1,19 @@
+version: '3'
+services:
+  jellyseerr:
+    image: fallenbagel/jellyseerr:latest
+    container_name: jellyseerr
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/New_York
+      # - JELLYFIN_TYPE=emby # Uncomment and set to "emby" if using Emby
+    ports:
+      - 5056:5055
+    volumes:
+      - /config/jellyseerr:/app/config
+      - /media/joe/volume4:/volume4
+      - /media/joe/volume5:/volume5
+      - /media/joe/EXT4T:/volume6
+      - /media/joe/EXT5T:/volume7
+    restart: unless-stopped

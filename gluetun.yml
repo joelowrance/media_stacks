@@ -1,0 +1,27 @@
+version: "3"
+services:
+  gluetun:
+    image: qmcgaw/gluetun
+    cap_add:
+      - NET_ADMIN
+    volumes:
+      - /config/gluetun:/glutun
+    ports:
+      - 9191:9191
+      - 7080:8080
+      - 6881:6881
+      - 6881:6881/udp
+      - 8080:8080
+    restart: always
+    devices:
+      - /dev/net/tun
+    environment:
+      - VPN_SERVICE_PROVIDER=nordvpn
+      - VPN_TYPE=openvpn
+      - SERVER_COUNTRIES=Netherlands,France,Canada
+      - OPENVPN_USER=FIND_YOUR_OWN_USERNAME
+      - OPENVPN_PASSWORD=FIND_YOUR_OWN_PASSWORD
+      #- SERVER_REGIONS=PIA_REGION
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/New_York
